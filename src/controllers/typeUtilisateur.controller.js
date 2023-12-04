@@ -10,7 +10,7 @@ module.exports.getAllTypeUtilisateurs = async (req, res) => {
     if(results.rowCount){
         res.status(200).json(results.rows);
     } else {
-        res.status(400).send("Pas de données disponible")
+        res.status(404).send("Pas de données disponible")
     }
 }
 
@@ -24,7 +24,7 @@ module.exports.getTypeUtilisateurById = async(req, res) =>{
     if(result.rowCount){
         res.status(200).json(result.rows);
     } else {
-        res.status(400).send("Cet utilisateur n'existe pas")
+        res.status(404).send("Cet utilisateur n'existe pas")
     }
 } 
 
@@ -38,7 +38,7 @@ module.exports.addTypeUtilisateur =  async (req, res) => {
     if(result.rowCount && result.command === 'INSERT'){
         res.status(201).send("Type utilisateur créee avec succès !");
     } else {
-        res.status(400).json("Impossible d'ajouter")
+        res.status(404).json("Impossible d'ajouter")
     }
 } 
  
@@ -52,14 +52,14 @@ module.exports.updateTypeUtilisateur = async (req, res) => {
     const noTypeUtilisateurFound = !result.rows.length;
 
     if (noTypeUtilisateurFound) {
-        res.status(400).send("Impossible de modifier ce type utilisateur car il n'existe pas dans la base de données.");
+        res.status(404).send("Impossible de modifier ce type utilisateur car il n'existe pas dans la base de données.");
     } else {
        const results = await db.query(typeUtilisateurQueries.updateTypeUtilisateur, [libelle, id])
 
        if(results.rowCount && results.command === 'UPDATE'){
              res.status(200).send("Type utilisateur modifié avec succès !");
        } else {
-        res.status(400).send("Erreur")
+        res.status(404).send("Erreur")
        }
     }
 } 
@@ -74,8 +74,8 @@ module.exports.deleteTypeUtilisateur = async(req, res) => {
     //console.log(results);
 
     try{
-        const noNiveauTypeUtilisateurFound = !results.rows.length;
-        if (noNiveauTypeUtilisateurFound) {
+        const noTypeUtilisateurFound = !results.rows.length;
+        if (noTypeUtilisateurFound) {
             res.send("Impossible de supprimer ce type car il n'existe pas dans la base de données. ");
         } else {
             const result = await db.query(typeUtilisateurQueries.deleteTypeUtilisateur, [id])
@@ -83,11 +83,11 @@ module.exports.deleteTypeUtilisateur = async(req, res) => {
             if (result) {
                 res.status(200).send("Type utilisateur supprimé avec succès");
             } else {
-                res.status(400).send("Erreur")
+                res.status(404).send("Erreur")
             }
         }
     } catch (err){
-        res.status(400).send(err)
+        res.status(404).send(err)
     }
     
 } 

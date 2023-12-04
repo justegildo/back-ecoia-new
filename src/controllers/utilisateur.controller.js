@@ -82,9 +82,9 @@ module.exports.addUtilisateur = async (req, res) => {
                     let mailOptions = {
                         from: process.env.SENDER_MAIL, // sender address
                         to: req.body.email, // list of receivers
-                        subject: 'ECOLE', // Subject line
+                        subject: 'ECOIA', // Subject line
                         text: "Inscription réussie avec succès ! ", // plain text body
-                        html: `<p>${prenoms + ' ' + nom} une très chaleureuse bienvenue à vous sur la plateforme de notre école ! C\est agréable de vous avoir parmi nous ! </p><br> `
+                        html: `<p>${prenoms + ' ' + nom} une très chaleureuse bienvenue à vous sur la plateforme Ecoia ! C\est agréable de vous avoir parmi nous ! </p><br> `
                     };
 
                     transporter.sendMail(mailOptions, (error, info) => {
@@ -130,9 +130,9 @@ module.exports.addUtilisateur = async (req, res) => {
                     let mailOptions = {
                         from: process.env.SENDER_MAIL, // sender address
                         to: req.body.email, // list of receivers
-                        subject: 'ECOLE', // Subject line
+                        subject: 'ECOIA', // Subject line
                         text: "Inscription réussie avec succès ! ", // plain text body
-                        html: `<p>${prenoms + ' ' + nom} une très chaleureuse bienvenue à vous sur la plateforme de notre école ! C\est agréable de vous avoir parmi nous ! </p><br> `
+                        html: `<p>${prenoms + ' ' + nom} une très chaleureuse bienvenue à vous sur la plateforme Ecoia ! C\est agréable de vous avoir parmi nous ! </p><br> `
                     };
 
                     transporter.sendMail(mailOptions, (error, info) => {

@@ -8,14 +8,14 @@ const typeUtilisateurController = require('../controllers/typeUtilisateur.contro
  *   post:
  *     summary: Créer un nouveau type utilisateur
  *     tags:
- *      - Type utilisateur
+ *      - Type Utilisateur
  *     description: Crée un nouveau type utilisateur avec les informations fournies.
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/TypeUtilisateur'
+ *             $ref: '#/components/schemas/Type'
  *     responses:
  *       200:
  *         description: typeUtilisateur créé avec succès.
@@ -31,7 +31,7 @@ router.post("/add", typeUtilisateurController.addTypeUtilisateur);
  *   get:
  *     summary: Récupérer tous les types utilisateurs
  *     tags:
- *      - Type utilisateur
+ *      - Type Utilisateur
  *     description: Renvoie une liste de tous les typeUtilisateurs.
  *     responses:
  *       200:
@@ -46,7 +46,7 @@ router.get('/', typeUtilisateurController.getAllTypeUtilisateurs);
  *   get:
  *     summary: Récupérer un type utilisateur par son identifiant
  *     tags:
- *      - Type utilisateur
+ *      - Type Utilisateur
  *     description: Renvoie un type utilisateur en fonction de son identifiant.
  *     parameters:
  *       - name: id
@@ -70,7 +70,7 @@ router.get('/:id', typeUtilisateurController.getTypeUtilisateurById);
  *   put:
  *     summary: Mettre à jour un type utilisateur
  *     tags:
- *      - Type utilisateur
+ *      - Type Utilisateur
  *     description: Met à jour un type utilisateur en fonction de son identifiant.
  *     parameters:
  *       - name: id
@@ -84,7 +84,7 @@ router.get('/:id', typeUtilisateurController.getTypeUtilisateurById);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/TypeUtilisateur'
+ *             $ref: '#/components/schemas/Type'
  *     responses:
  *       200:
  *         description: Type utilisateur mis à jour avec succès.
@@ -99,7 +99,7 @@ router.put('/:id', typeUtilisateurController.updateTypeUtilisateur);
  *   delete:
  *     summary: Supprimer un type utilisateur
  *     tags:
- *      - Type utilisateur
+ *      - Type Utilisateur
  *     description: Supprime un type utilisateur en fonction de son identifiant.
  *     parameters:
  *       - name: id
@@ -113,7 +113,7 @@ router.put('/:id', typeUtilisateurController.updateTypeUtilisateur);
  *         description: Type utilisateur supprimé avec succès.
  *       404:
  *         description: Type utilisateur non trouvé.
- */
+*/
 
 router.delete('/:id', typeUtilisateurController.deleteTypeUtilisateur);  
 

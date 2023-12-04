@@ -1,4 +1,4 @@
-const getAllUtilisateurs = "SELECT u.id, u.nom, u.prenoms, u.email, u.telephone, u.sexe, jsonb_build_object('id', t.id, 'libelle', t.libelle ) AS type_utilisateur, jsonb_build_object('id', e.id, 'nom_ecole', e.nom ) AS responsable_ecole, jsonb_build_object('id', p.id, 'matiere', ma.libelle ) AS professeur FROM utilisateur AS u JOIN type_utilisateur AS t ON u.type_utilisateur_id = t.id LEFT JOIN ecole AS e ON u.id = e.utilisateur_id "; 
+const getAllUtilisateurs = "SELECT u.id, u.nom, u.prenoms, u.email, u.telephone, u.sexe, jsonb_build_object('id', t.id, 'libelle', t.libelle ) AS type_utilisateur, jsonb_build_object('id', e.id, 'nom_ecole', e.nom ) AS responsable_ecole FROM utilisateur AS u JOIN type_utilisateur AS t ON u.type_utilisateur_id = t.id LEFT JOIN ecole AS e ON u.id = e.utilisateur_id "; 
 
 const getUser = "SELECT CONCAT(nom, ' ', prenoms) AS name, email, telephone, password, is_active, delete FROM utilisateur WHERE email = $1 OR telephone = $2";
 

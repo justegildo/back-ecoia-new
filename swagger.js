@@ -8,7 +8,7 @@ const swaggerDefinition = {
   info: {
     title: 'API REST',
     version: '1.0.0',
-    description: 'API of EcoleApp',
+    description: 'API of ECOIA-APP',
     license: {
       name: "ECO-MOY",
       url: "https://spdx.org/licenses/JDG.html",
@@ -65,7 +65,7 @@ const swaggerDefinition = {
           "password": {
             "type": "string"
           },
-          "type_utilisateur_id": {
+          "type_utilisateur": {
             "type": "string",
             //"format": "number"
           },
@@ -156,7 +156,7 @@ const swaggerDefinition = {
         ]
       },
 
-      TypeUtilisateur: {
+      Type: {
         "type": "object",
         "properties": {
           "libelle": {
@@ -168,11 +168,71 @@ const swaggerDefinition = {
         ]
       },
 
+      Ecole: {
+        "type": "object",
+        "properties": {
+          "nom": {
+            "type": "string"
+          },
+          "activites": {
+            "type": "string"
+          },
+          "resultats": {
+            "type": "string"
+          }, 
+          "raison_sociale": {
+            "type": "string"
+          }, 
+          "classes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }, 
+          "temoignagne": {
+            "type": "string"
+          }, 
+          "description": {
+            "type": "string"
+          }, 
+          "niveau_id": {
+            "type": "string"
+          }, 
+          "departement_id": {
+            "type": "string"
+          }, 
+          "commune_id": {
+            "type": "string"
+          }, 
+          "arrondissement_id": {
+            "type": "string"
+          }, 
+          "quartier_id": {
+            "type": "string"
+          }, 
+          "utilisateur_id": {
+            "type": "string"
+          }, 
+          "latitude": {
+            "type": "string"
+          }, 
+          "longitude": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nom"
+        ]
+      },
+
+
     }
   },
   servers: [
     {
       url: `http://localhost:${process.env.SERVEUR_PORT}`,
+      description: 'Local server',
+      url: `http://192.168.100.26:${process.env.SERVEUR_PORT}`,
       description: 'Local server',
     },
   ],
@@ -181,9 +241,9 @@ const swaggerDefinition = {
 
 const options = {
   swaggerDefinition,
-  apis: ['../back/src/routes/*.js'],
+  apis: ['./src/routes/*.js'],
 };
-
+//back-new/src/routes/*.js
 const swaggerSpec = swaggerJSDoc(options);
 
 module.exports = swaggerSpec;
