@@ -226,6 +226,60 @@ const swaggerDefinition = {
       },
 
 
+      Search1: {
+        "type": "object",
+        "properties": {
+          "latitudeEcole": {
+            "type": "string"
+          }, 
+          "longitudeEcole": {
+            "type": "string"
+          }, 
+          "latitude": {
+            "type": "string"
+          }, 
+          "longitude": {
+            "type": "string"
+          }, 
+          "distanceMax": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "", ""
+        ]
+      },
+
+      Search2: {
+        "type": "object",
+        "properties": {
+          "latitudeEcole": {
+            "type": "string"
+          }, 
+          "longitudeEcole": {
+            "type": "string"
+          }, 
+          "latitude": {
+            "type": "string"
+          }, 
+          "longitude": {
+            "type": "string"
+          }, 
+          "distanceMax": {
+            "type": "string"
+          }, 
+          "distanceMax": {
+            "type": "string"
+          }, 
+          "niveau": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "", ""
+        ]
+      },
+
     }
   },
   servers: [

@@ -132,7 +132,7 @@ router.delete('/:id', ecoleController.deleteEcole);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/SearchEcoleByPosition'
+ *             $ref: '#/components/schemas/Search1'
  *     responses:
  *       200:
  *         description: Les écoles trouvées avec succès.
@@ -156,7 +156,7 @@ router.post("/search-by-position", ecoleController.searchEcolesByPosition);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/SearchEcoleByPosition'
+ *             $ref: '#/components/schemas/Search2'
  *     responses:
  *       200:
  *         description: Les écoles trouvées avec succès.
