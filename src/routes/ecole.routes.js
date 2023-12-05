@@ -118,4 +118,76 @@ router.put('/:id', ecoleController.updateEcole);
 router.delete('/:id', ecoleController.deleteEcole);  
 
 
+
+/**
+ * @swagger
+ * /api/ecole/search-by-position:
+ *   post:
+ *     summary: Les écoles qui sont à proximité de l'utilisateur
+ *     tags:
+ *      - Ecole
+ *     description: Rechercher des ecoles avec les informations fournies.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/SearchEcoleByPosition'
+ *     responses:
+ *       200:
+ *         description: Les écoles trouvées avec succès.
+ *       400:
+ *         description: Données d'entrée non valides.
+ */
+router.post("/search-by-position", ecoleController.searchEcolesByPosition);
+
+
+
+/**
+ * @swagger
+ * /api/ecole/search-by-position-and-niveau:
+ *   post:
+ *     summary: Les écoles qui sont à proximité de l'utilisateur
+ *     tags:
+ *      - Ecole
+ *     description: Rechercher des ecoles avec les informations fournies.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/SearchEcoleByPosition'
+ *     responses:
+ *       200:
+ *         description: Les écoles trouvées avec succès.
+ *       400:
+ *         description: Données d'entrée non valides.
+ */
+router.post("/search-by-position-and-niveau", ecoleController.searchEcolesByPositionAndNiveau);
+
+
+
+/**
+ * @swagger
+ * /api/ecole/search:
+ *   post:
+ *     summary: Les écoles qui sont à proximité de l'utilisateur
+ *     tags:
+ *      - Ecole
+ *     description: Rechercher des ecoles avec les informations fournies.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/SearchEcoleByPosition'
+ *     responses:
+ *       200:
+ *         description: Les écoles trouvées avec succès.
+ *       400:
+ *         description: Données d'entrée non valides.
+ */
+router.post("/search", ecoleController.searchEcoles);
+
+
 module.exports = router;

@@ -110,6 +110,56 @@ module.exports.deleteEcole = async(req, res) => {
         }
     } catch (err){
         res.status(404).send(err)
-    }
-    
+    } 
 } 
+
+
+
+
+//rechercher une école par position
+module.exports.searchEcolesByPosition = async (req, res) => {
+    const { latitudeEcole, longitudeEcole, latitude, longitude, distanceMax } = req.body;
+    //console.log(req.body);
+
+    const result = await db.query(ecoleQueries.searchByPosition, [latitudeEcole, longitudeEcole, latitude, longitude, distanceMax])
+    //console.log(result);  
+
+    if(result.rowCount){
+        res.status(200).json(result.rows);
+    } else {
+        res.status(400).send("Pas de données disponible")
+    }
+}
+
+
+//rechercher une école par position et niveau 
+module.exports.searchEcolesByPositionAndNiveau = async (req, res) => {
+    const { latitudeEcole, longitudeEcole, latitude, longitude, distanceMax, niveau } = req.body;
+    //console.log(req.body);
+
+    const result = await db.query(ecoleQueries.searchByPositionAndNiveauType, 
+        [ latitudeEcole, longitudeEcole, latitude, longitude, distanceMax, niveau ])
+    //console.log(result);  
+
+    if(result.rowCount){
+        res.status(200).json(result.rows);
+    } else {
+        res.status(400).send("Pas de données disponible")
+    }
+}
+
+//rechercher une école par position
+module.exports.searchEcoles = async (req, res) => {
+    const { departement, commune, arrondissement, quartier } = req.body;
+    //console.log(req.body);
+
+    const result = await db.query(ecoleQueries.search, [departement, commune, arrondissement, quartier])
+    //console.log(result);  
+
+    if(result.rowCount){
+        res.status(200).json(result.rows);
+    } else {
+        res.status(400).send("Pas de données disponible")
+    }
+
+}

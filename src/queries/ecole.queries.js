@@ -8,12 +8,18 @@ const deleteEcole = "DELETE FROM ecole WHERE id = $1";
 
 const updateEcole = "UPDATE ecole SET nom = $1, activites = $2, resultats = $3, raison_sociale  = $4, classes = $5, temoignagne = $6, description = $7, niveau_id = $8, departement_id = $9, commune_id = $10, arrondissement_id = $11, quartier_id = $12, utilisateur_id = $13, geometry = ST_SetSRID(ST_MakePoint($14, $15), 4326)  WHERE id = $16";
 
+const searchByPosition = "SELECT e.id, nom, CONCAT(ROUND((ST_Distance(geometry::geography, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) / 1000)::numeric, 1), ' km') AS distance, n.libelle AS niveau_type FROM ecole AS e JOIN niveau AS n ON e.niveau_id = n.id WHERE (ST_Distance(geometry::geography, ST_SetSRID(ST_MakePoint($3, $4), 4326)::geography) / 1000) <= $5 ORDER BY distance;"
 
+const searchByPositionAndNiveauType = "SELECT e.id, nom, CONCAT(ROUND((ST_Distance(geometry::geography, ST_SetSRID(ST_MakePoint($1, $2), 4326)::geography) / 1000)::numeric, 1), ' km') AS distance, n.libelle AS niveau_type FROM ecole AS e JOIN niveau AS n ON e.niveau_id = n.id WHERE (ST_Distance(geometry::geography, ST_SetSRID(ST_MakePoint($3, $4), 4326)::geography) / 1000) <= $5 AND n.libelle = $6 ORDER BY distance;"
+
+const search = ""
 
 module.exports = {
     getAllEcoles,
     getEcoleById,
     addEcole,
     deleteEcole,
-    updateEcole
+    updateEcole,
+    searchByPosition,
+    searchByPositionAndNiveauType
 }
